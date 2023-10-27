@@ -68,7 +68,7 @@ QVImageCore::QVImageCore(QObject *parent) : QObject(parent)
     settingsUpdated();
 }
 
-void QVImageCore::loadFile(const QString &fileName, bool isReloading)
+void QVImageCore::loadFile(const QString &fileName)
 {
     if (waitingOnLoad)
     {
@@ -105,7 +105,7 @@ void QVImageCore::loadFile(const QString &fileName, bool isReloading)
     QString cacheKey = getPixmapCacheKey(sanitaryFileName, fileInfo.size(), targetColorSpace);
 
     //check if cached already before loading the long way
-    auto *cachedData = isReloading ? nullptr : QVImageCore::pixmapCache.take(cacheKey);
+    auto *cachedData = QVImageCore::pixmapCache.take(cacheKey);
     if (cachedData != nullptr)
     {
         ReadData readData = *cachedData;
@@ -621,14 +621,18 @@ QPixmap QVImageCore::scaleExpensively(const QSizeF desiredSize)
         relevantPixmap = matchCurrentRotation(relevantPixmap);
     }
 
-    // If we are really close to the original size, just return the original
-    if (abs(desiredSize.width() - relevantPixmap.width()) < 1 &&
-        abs(desiredSize.height() - relevantPixmap.height()) < 1)
-    {
-        return relevantPixmap;
+
+    QPixmap finalMap = relevantPixmap.scaled(size, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    QScreen *currentScreen = qvApp->getMainWindow(0)->screenContaining(qvApp->getMainWindow(0)->frameGeometry());
+
+    if(qvApp->getSettingsManager().getBoolean("windowimagestuck") && (finalMap.height() < currentScreen->size().height() )){
+	    currentFileDetails.loadedPixmapSize = QSize(finalMap.width(), finalMap.height());
+	    emit updateLoadedPixmapItem();
+	    
     }
 
-    return relevantPixmap.scaled(size, Qt::KeepAspectRatio, Qt::SmoothTransformation);;
+
+    return finalMap;
 }
 
 
