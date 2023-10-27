@@ -18,6 +18,7 @@ However, if this were to see other people's use, it should work more politely, a
 - - it will <b> not </b> build from this github alone, you must replace the src folder from the build guide with this one.
   - it seemed impolite and difficult to make a new repo instead of a fork, but that only made things more difficult for everyone else.
 - you will probably need a few more packages than are suggested, just because of QT and your platform/distribution.
+- The goal of this particular fork is not a merge, but a documentation that this happened for anyone who wanted to look up JPEGView alternatives for linux. If and when I understand how to implement this correctly, I will try and do so.
 
 ## TODO
 - the entire project really should have just wrapped the current scroll wheel zoom within a setting, and rescaled the window if the setting is true.
