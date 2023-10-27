@@ -33,12 +33,10 @@ public:
     };
     Q_ENUM(GoToFileMode)
 
-
+    
     QMimeData* getMimeData() const;
     void loadMimeData(const QMimeData *mimeData);
     void loadFile(const QString &fileName);
-
-    void reloadFile();
 
     void zoomIn(const QPoint &pos = QPoint(-1, -1));
 

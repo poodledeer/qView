@@ -244,14 +244,6 @@ void QVGraphicsView::loadFile(const QString &fileName)
     imageCore.loadFile(fileName);
 }
 
-void QVGraphicsView::reloadFile()
-{
-    if (!getCurrentFileDetails().isPixmapLoaded)
-        return;
-
-    imageCore.loadFile(getCurrentFileDetails().fileInfo.absoluteFilePath(), true);
-}
-
 void QVGraphicsView::postLoad()
 {
     updateLoadedPixmapItem();
@@ -309,6 +301,8 @@ void QVGraphicsView::zoom(qreal scaleFactor, const QPoint &pos)
     {
         expensiveScaleTimerNew->start();
     }
+	
+    
 }
 
 void QVGraphicsView::scaleExpensively()
@@ -358,6 +352,8 @@ void QVGraphicsView::scaleExpensively()
     // Set zoombasis
     zoomBasis = transform();
     zoomBasisScaleFactor = 1.0;
+
+    
 }
 
 void QVGraphicsView::makeUnscaled()

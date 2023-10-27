@@ -318,8 +318,7 @@ void MainWindow::fileChanged()
     populateOpenWithTimer->start();
     disableActions();
 
-    if (info->isVisible())
-        refreshProperties();
+    refreshProperties();
     buildWindowTitle();
 }
 
@@ -509,7 +508,7 @@ void MainWindow::setWindowSize()
 
     const QSize windowFrameSize = frameGeometry().size() - geometry().size();
     const QSize hardLimitSize = currentScreen->availableSize() - windowFrameSize - extraWidgetsSize;
-    const QSize screenSize = currentScreen->size();
+    const QSize screenSize = currentScreen->size(); 
     const QSize minWindowSize = (screenSize * minWindowResizedPercentage).boundedTo(hardLimitSize);
     const QSize maxWindowSize = (screenSize * maxWindowResizedPercentage).boundedTo(hardLimitSize);
 
@@ -666,11 +665,6 @@ void MainWindow::pickUrl()
         inputDialog->deleteLater();
     });
     inputDialog->open();
-}
-
-void MainWindow::reloadFile()
-{
-    graphicsView->reloadFile();
 }
 
 void MainWindow::openWith(const OpenWith::OpenWithItem &openWithItem)
@@ -899,11 +893,13 @@ void MainWindow::rename()
 void MainWindow::zoomIn()
 {
     graphicsView->zoomIn();
+    
 }
 
 void MainWindow::zoomOut()
 {
     graphicsView->zoomOut();
+   
 }
 
 void MainWindow::resetZoom()
@@ -1090,6 +1086,7 @@ void MainWindow::toggleFullScreen()
     if (windowState() == Qt::WindowFullScreen)
     {
         setWindowState(storedWindowState);
+        setWindowSize();
     }
     else
     {
