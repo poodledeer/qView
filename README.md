@@ -1,8 +1,8 @@
 # This
 is a fork of <a href="https://interversehq.com/qview/">qView</a> which adds JPEGView-like zoom.
 
-<img src="https://poodle.boats/media/qview_poodle.gif" / >
-<img src = "https://poodle.boats/media/qview_setting.png" style="width:10%;"/>
+<img src="https://poodle.boats/media/qview_poodle.gif" >
+<img src = "https://poodle.boats/media/qview_setting.png" style="width:60%;"/>
 
 This change was added in a few hours solely from frustration. It mostly works to my expectations, as this is a make-or-break feature for me.
 However, if this were to see other people's use, it should work more politely, and so there is more to do.
