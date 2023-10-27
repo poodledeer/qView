@@ -15,7 +15,8 @@ However, if this were to see other people's use, it should work more politely, a
 
 ## Install
 - follow the <a href="https://github.com/jurplel/qView/wiki/Linux-Build-and-Install-Guide"> install guide </a> for dependencies and a working folder to build from
-- - it will <b> not </b> build from this github, but it seemed impolite to make a new repo instead of a fork
+- - it will <b> not </b> build from this github alone, you must replace the src folder from the build guide with this one.
+  - it seemed impolite and difficult to make a new repo instead of a fork, but that only made things more difficult for everyone else.
 - you will probably need a few more packages than are suggested, just because of QT and your platform/distribution.
 
 ## TODO
